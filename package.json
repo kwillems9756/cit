@@ -4,7 +4,7 @@
   "description": "CodeIgniter Toolkit where you can write templates for views, controllers and so forth",
   "main": "./dist.js",
   "scripts": {
-    "dev": "esbuild ./src/main.ts --bundle --sourcemap --watch --outfile=dist.js"
+    "dev": "esbuild ./src/main.ts --platform=node --bundle --sourcemap --watch --outfile=dist.js"
   },
   "keywords": [
     "codeigniter",
