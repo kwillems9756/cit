@@ -1,0 +1,28 @@
+{
+  "name": "cit",
+  "version": "1.0.0",
+  "description": "CodeIgniter Toolkit where you can write templates for views, controllers and so forth",
+  "main": "./dist.js",
+  "scripts": {
+    "dev": "esbuild ./src/main.ts --bundle --sourcemap --watch --outfile=dist.js"
+  },
+  "keywords": [
+    "codeigniter",
+    "ci",
+    "toolkit",
+    "templates",
+    "templating",
+    "ejs",
+    "cli"
+  ],
+  "author": "CodeBoy124",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^11.1.0",
+    "ejs": "^3.1.9"
+  },
+  "devDependencies": {
+    "@types/ejs": "^3.1.5",
+    "esbuild": "0.19.8"
+  }
+}
