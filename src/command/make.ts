@@ -45,25 +45,22 @@ export default async function make(filename: string, options: {use?: string}) {
 
     let data: {[field: string]: string | number | boolean} = {};
     for(let argumentName in templateConfig.arguments) {
-        const answers = await inquirer.prompt<{[key: string]: string}>([
-            {
-                name: argumentName,
-                message: `${argumentName} (${templateConfig.arguments[argumentName].type}):`,
-                default: templateConfig.arguments[argumentName].default ?? null
-            }
-        ]);
         const type = templateConfig.arguments[argumentName].type;
-        switch(type) {
-            case "string":
-                data[argumentName] = answers[argumentName];
-                break;
-            case "number":
-                data[argumentName] = parseFloat(answers[argumentName]);
-                break;
-            case "boolean":
-                data[argumentName] = answers[argumentName].toLowerCase() == "true" || answers[argumentName].toLowerCase() == "yes" || answers[argumentName].toLowerCase() == "y";
-                break;
+
+        let promptType = "input";
+        if(type == "boolean") {
+            promptType = "confirm"
+        } else if(type == "number") {
+            promptType = "number";
         }
+
+        const answers = await inquirer.prompt<{[key: string]: string}>([{
+            type: promptType,
+            name: argumentName,
+            message: argumentName + ":",
+            default: templateConfig.arguments.default ?? null
+        }]);
+        data[argumentName] = answers[argumentName];
     }
     
     const output = await renderFile(templateFilePath, data);
