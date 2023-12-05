@@ -1,5 +1,5 @@
 import { join as joinPath } from "path";
-import { writeFileSync, existsSync as dirExistsSync, mkdirSync } from "fs";
+import { writeFileSync, existsSync as dirExistsSync, mkdirSync, existsSync } from "fs";
 
 function makeTemplatesFolderIfNeeded(folder: string) {
     if(!dirExistsSync(folder)) {
@@ -13,8 +13,11 @@ export default function setup(filename: string) {
     const templateRootFolder = joinPath(cwd, "templates");
     makeTemplatesFolderIfNeeded(templateRootFolder);
 
-    // TODO: Warning if sub folder already exists
     const templateSubFolder = joinPath(templateRootFolder, filename);
+    if(existsSync(templateSubFolder)) {
+        console.error(`Error: Template folder for "${filename}" already exists`);
+        process.exit(0);
+    }
     makeTemplatesFolderIfNeeded(templateSubFolder);
 
     const templateFilePath = joinPath(templateSubFolder, "template.ejs");
