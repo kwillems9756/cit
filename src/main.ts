@@ -3,6 +3,7 @@ import { program } from "commander";
 import { name, version, description } from "../package.json";
 import make from "./command/make";
 import setup from "./command/setup";
+import info from "./command/info";
 
 program
     .name(name)
@@ -21,5 +22,11 @@ program
     .option('--use <template>', 'The template to use')
     .argument('<filename>')
     .action(make)
+
+program
+    .command('info')
+    .description('Get information about a template')
+    .argument('<template>')
+    .action(info)
 
 program.parse();
