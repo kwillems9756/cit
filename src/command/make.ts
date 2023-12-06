@@ -1,23 +1,9 @@
-import { existsSync, readFileSync, writeFileSync } from "fs"
+import { readFileSync, writeFileSync } from "fs"
 import inquirer from "inquirer"
 import { join as joinPath } from "path"
 import { renderFile } from "ejs"
 import type { templateConfig } from "./types"
-
-function checkFiles(templatePath: string) {
-    if(!existsSync(templatePath)) {
-        console.error("Error: Template not found")
-        process.exit(1)
-    }
-    if(!existsSync(joinPath(templatePath, "config.json"))) {
-        console.error("Error: Template not configured correctly, config.json missing")
-        process.exit(1)
-    }
-    if(!existsSync(joinPath(templatePath, "template.ejs"))) {
-        console.error("Error: Template not configured correctly, template.ejs missing")
-        process.exit(1)
-    }
-}
+import { checkTemplate } from "./util"
 
 export default async function make(filename: string, options: {use?: string}) {
     if(!('use' in options)) {
@@ -25,10 +11,10 @@ export default async function make(filename: string, options: {use?: string}) {
         process.exit(1)
     }
 
+    checkTemplate(options.use as string);
     const templatePath = joinPath(process.cwd(), "templates", options.use as string)
     const configFilePath = joinPath(templatePath, "config.json")
     const templateFilePath = joinPath(templatePath, "template.ejs")
-    checkFiles(templatePath);
     
     const outputPath = joinPath(process.cwd(), filename)
 
