@@ -1,24 +1,27 @@
 import { existsSync, readFileSync, readdirSync } from "fs";
 import { join as joinPath } from "path";
 import type { templateConfig } from "./types";
+import { checkTemplate } from "./util";
 
 export default function list() {
-    const cwd = process.cwd();
-    const templatesDirectory = joinPath(cwd, "templates");
+    let outputMessage = "Templates:";
+    const templatesDirectory = joinPath(process.cwd(), "templates");
+    if(!existsSync(templatesDirectory)) {
+        console.log(outputMessage);
+        process.exit(0)
+    }
     
     const possibleTemplatesFolder = readdirSync(templatesDirectory, { withFileTypes: true })
         .filter(dirent => dirent.isDirectory())
         .map(dirent => dirent.name)
     
-    console.log("Templates:")
-    for(let folder of possibleTemplatesFolder) {
-        let fullTemplatePath = joinPath(templatesDirectory, folder);
+    for(let templateName of possibleTemplatesFolder) {
+        let fullTemplatePath = joinPath(templatesDirectory, templateName);
+        checkTemplate(templateName);
+
         let configFilePath = joinPath(fullTemplatePath, "config.json");
-        if(!existsSync(configFilePath)) {
-            console.error("Error: Template not configured correctly, missing config.json file");
-            process.exit(1);
-        }
         const config: templateConfig = JSON.parse(readFileSync(configFilePath, 'utf8'))
-        console.log(` * ${folder} - version ${config.version} - ${config.description}`)
+        outputMessage += `\n * ${templateName} - version ${config.version} - ${config.description}`
     }
+    console.log(outputMessage);
 }
