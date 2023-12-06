@@ -7,15 +7,15 @@ function makeTemplatesFolderIfNeeded(folder: string) {
     }
 }
 
-export default function setup(filename: string) {
+export default function setup(template: string) {
     const cwd = process.cwd();
     
     const templateRootFolder = joinPath(cwd, "templates");
     makeTemplatesFolderIfNeeded(templateRootFolder);
 
-    const templateSubFolder = joinPath(templateRootFolder, filename);
+    const templateSubFolder = joinPath(templateRootFolder, template);
     if(existsSync(templateSubFolder)) {
-        console.error(`Error: Template folder for "${filename}" already exists`);
+        console.error(`Error: Template folder for "${template}" already exists`);
         process.exit(0);
     }
     makeTemplatesFolderIfNeeded(templateSubFolder);
