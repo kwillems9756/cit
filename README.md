@@ -5,7 +5,7 @@ CodeIgniter Toolkit where you can write templates for views, controllers and so 
 Here is a list of all available commands and statusses
  - [Working on] `cit setup myTemplate`
  - [Working on] `cit make --use=myTemplate myFile`
- - [Not started] `cit list`
+ - [Working on] `cit list`
  - [Working on] `cit info --use=myTemplate`
 
 ## Setup command
@@ -29,6 +29,13 @@ cit make --use=simplePage public/pages/index.html
 ```
 PLEASE MAKE SURE TO ADD THE FILE EXTENSION, because it can't be determined without that.
 If the template requires additional information/arguments it will prompt them, so you can easily answer them
+
+## List command
+With this command you can list all the existing templates and view their descriptions
+Use it with
+```shell
+cit list
+```
 
 ## Info command
 With this command you can request information from a certain template such as a description or information about the arguments.
