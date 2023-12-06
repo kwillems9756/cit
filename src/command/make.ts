@@ -2,16 +2,7 @@ import { existsSync, readFileSync, writeFileSync } from "fs"
 import inquirer from "inquirer"
 import { join as joinPath } from "path"
 import { renderFile } from "ejs"
-
-interface templateConfig {
-    version: string,
-    description: string,
-    arguments: {[field: string]: {
-        type: "string" | "number" | "boolean",
-        description: string,
-        default?: string | number | boolean
-    }}
-}
+import type { templateConfig } from "./types"
 
 function checkFiles(templatePath: string) {
     if(!existsSync(templatePath)) {

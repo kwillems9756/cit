@@ -1,15 +1,6 @@
 import { existsSync, readFileSync } from "fs"
 import { join as joinPath } from "path"
-
-interface templateConfig {
-    version: string,
-    description: string,
-    arguments: {[field: string]: {
-        type: "string" | "number" | "boolean",
-        description: string,
-        default?: string | number | boolean
-    }}
-}
+import type { templateConfig } from "./types"
 
 export default function info(templateName: string) {
     const templatePath = joinPath(process.cwd(), "templates", templateName)
