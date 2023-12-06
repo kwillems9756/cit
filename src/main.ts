@@ -5,6 +5,7 @@ import make from "./command/make";
 import setup from "./command/setup";
 import info from "./command/info";
 import list from "./command/list";
+import deleteCommand from "./command/delete";
 
 program
     .name(name)
@@ -16,6 +17,12 @@ program
     .description('You can use this command to create a new template file')
     .argument('<filename>', 'The filename of the template you are creating')
     .action(setup)
+
+program
+    .command('delete')
+    .description('With this command you can delete a template')
+    .argument('<template>', 'The template to remove')
+    .action(deleteCommand)
 
 program
     .command('make')
