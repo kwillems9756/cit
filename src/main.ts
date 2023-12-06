@@ -4,6 +4,7 @@ import { name, version, description } from "../package.json";
 import make from "./command/make";
 import setup from "./command/setup";
 import info from "./command/info";
+import list from "./command/list";
 
 program
     .name(name)
@@ -22,6 +23,11 @@ program
     .option('--use <template>', 'The template to use')
     .argument('<filename>')
     .action(make)
+
+program
+    .command('list')
+    .description('With this command you can request information from a certain template such as a description or information about the arguments')
+    .action(list)
 
 program
     .command('info')
