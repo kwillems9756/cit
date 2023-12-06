@@ -4,6 +4,7 @@ CodeIgniter Toolkit where you can write templates for views, controllers and so 
 ## Commands
 Here is a list of all available commands and statusses
  - [Working on] `cit setup myTemplate`
+ - [Working on] `cit delete myTemplate`
  - [Working on] `cit make --use=myTemplate myFile`
  - [Working on] `cit list`
  - [Working on] `cit info --use=myTemplate`
@@ -17,6 +18,15 @@ You can run this using
 cit setup someTemplateName
 ```
 Where the `someTemplateName` is the name of your template without the .ejs extension
+
+## Delete command
+With this command you can delete a template.
+The removed template will not be stored, so use this carefully.
+
+If you want to remove some file called `myTemplate` you can run this:
+```shell
+cit delete myTemplate
+```
 
 ## Make command
 Using this command you can create new files based on template files.
