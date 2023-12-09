@@ -8,7 +8,7 @@
     "build": "esbuild ./src/main.ts --platform=node --bundle --minify --banner:js=\"#! /usr/bin/env node\" --outfile=dist.min.js"
   },
   "bin": {
-    "cit": "./dist.min.js"
+    "cit": "dist.min.js"
   },
   "keywords": [
     "codeigniter",
