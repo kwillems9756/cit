@@ -1,10 +1,14 @@
 {
-  "name": "cit",
+  "name": "cit-cli",
   "version": "1.0.0",
   "description": "CodeIgniter Toolkit where you can write templates for views, controllers and so forth",
   "main": "./dist.js",
   "scripts": {
-    "dev": "esbuild ./src/main.ts --platform=node --bundle --sourcemap --watch --outfile=dist.js"
+    "dev": "esbuild ./src/main.ts --platform=node --bundle --sourcemap --watch --outfile=dist.js",
+    "build": "esbuild ./src/main.ts --platform=node --bundle --minify --banner:js=\"#! /usr/bin/env node\" --outfile=dist.min.js"
+  },
+  "bin": {
+    "cit": "./dist.min.js"
   },
   "keywords": [
     "codeigniter",
