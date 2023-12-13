@@ -21,7 +21,7 @@ export default function setup(template: string) {
     makeTemplatesFolderIfNeeded(templateSubFolder);
 
     const templateFilePath = joinPath(templateSubFolder, "template.ejs");
-    const placeholderText = "Place here your EJS template code";
+    const placeholderText = "<% if(isPlaceholder) { %>\n  Is a placeholder\n<% } else { %>\n  Is not a placeholder\n<% } %>";
     writeFileSync(templateFilePath, placeholderText);
 
     const configFilePath = joinPath(templateSubFolder, "config.json");
