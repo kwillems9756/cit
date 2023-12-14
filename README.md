@@ -5,9 +5,10 @@ CodeIgniter Toolkit where you can write templates for views, controllers and so 
 Here is a list of all available commands and statusses
  - [Not tested] `cit setup myTemplate`
  - [Not tested] `cit delete myTemplate`
- - [Not tested] `cit make --use=myTemplate myFile`
+ - [Not tested] `cit make --use=myTemplate myFile.txt`
  - [Not tested] `cit list`
- - [Not tested] `cit info --use=myTemplate`
+ - [Not tested] `cit info myTemplate`
+ - [Yet to work on] `cit tutorial`
 
 ## Setup command
 You can use this command to create a new template file.
@@ -53,3 +54,7 @@ If you wanted information about a template called `someTemplate` you would do th
 ```shell
 cit info someTemplate
 ```
+
+## Tutorial command
+I haven't started working on this command yet.
+In some upcoming version this will guide you through a simple tutorial to explain all the commands

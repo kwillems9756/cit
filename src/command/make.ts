@@ -1,9 +1,16 @@
-import { readFileSync, writeFileSync } from "fs"
+import { readFileSync, writeFileSync, mkdirSync } from "fs"
 import inquirer from "inquirer"
-import { join as joinPath } from "path"
+import { join as joinPath, dirname } from "path"
 import { renderFile } from "ejs"
 import type { templateConfig } from "./types"
 import { checkTemplate } from "./util"
+
+function writeFileWithFolders(filename: string, contents: string) {
+  mkdirSync(dirname(filename), {
+    recursive: true
+  })
+  writeFileSync(filename, contents)
+}
 
 export default async function make(filename: string, options: {use?: string}) {
     if(!('use' in options)) {
@@ -41,5 +48,5 @@ export default async function make(filename: string, options: {use?: string}) {
     }
     
     const output = await renderFile(templateFilePath, data);
-    writeFileSync(outputPath, output);
+    writeFileWithFolders(outputPath, output);
 }
