@@ -1,8 +1,8 @@
 # CIT
-CodeIgniter Toolkit where you can write templates for views, controllers and so forth
+Toolkit where you can write templates for files you keep cloning
 
 ## Commands
-Here is a list of all available commands and statusses
+Here is a list of all available commands and statuses
  - [Not tested] `cit setup myTemplate`
  - [Not tested] `cit delete myTemplate`
  - [Not tested] `cit make --use=myTemplate myFile.txt`
