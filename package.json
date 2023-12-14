@@ -1,6 +1,6 @@
 {
   "name": "cit-cli",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "CodeIgniter Toolkit where you can write templates for views, controllers and so forth",
   "main": "./dist.js",
   "scripts": {
